@@ -1,5 +1,8 @@
 # vue-truffle-template
 
+## Demo
+![](screenshot.gif)
+
 ## Build Setup
 ``` bash
 
