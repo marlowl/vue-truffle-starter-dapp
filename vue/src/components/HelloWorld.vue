@@ -1,9 +1,11 @@
 <template>
     <div class="container">
+        
         <h1>Here is the value stored on the blockchain: {{currentValue}}</h1>
         <b-field label="Update the value">
             <b-input size="is-small" class="setValue" v-model="contractValue"></b-input>
         </b-field>
+        <h1>{{loading}}</h1>
         <button class="button is-primary" @click="setValue">Update</button>
     </div>
 </template>
@@ -18,11 +20,13 @@
                 contractValue: "",
                 contractJson: MyContract,
                 currentValue: "",
-                isValueUpdated: false
+                isValueUpdated: false,
+                loading: ''
             };
         },
         methods: {
             async setValue() {
+                this.loading = 'Loading new value to the network, this takes a couple of seconds'
                 web3 = new Web3(web3.currentProvider)
                 let myContract = new web3.eth.Contract(this.contractJson.abi, '0x9828F99985a337c41fE3Ef1B72932365d3EA4e58')
                 let setValue = await myContract.methods.set(this.contractValue).send({
@@ -30,7 +34,7 @@
                 })
                 if (setValue) {
                     this.isValueUpdated = true;
-                } 
+                }
             },
             async getCurrentValue() {
                 web3 = new Web3(web3.currentProvider)
@@ -40,7 +44,8 @@
             },
         },
         watch: {
-            isValueUpdated: function(newValue){
+            isValueUpdated: function(newValue,oldValue){
+
                 if(newValue == true){
                   window.location.reload(true);
                 }
