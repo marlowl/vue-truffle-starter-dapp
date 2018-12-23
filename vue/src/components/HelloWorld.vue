@@ -26,13 +26,14 @@
         },
         methods: {
             async setValue() {
-                this.loading = 'Loading new value to the network, this takes a couple of seconds'
+                this.loading = 'Transaction request is being processed'
                 web3 = new Web3(web3.currentProvider)
                 let myContract = new web3.eth.Contract(this.contractJson.abi, '0x9828F99985a337c41fE3Ef1B72932365d3EA4e58')
                 let setValue = await myContract.methods.set(this.contractValue).send({
                     from: process.env.VUE_APP_ETHADDRESS
                 })
                 if (setValue) {
+                    this.loading = ''
                     this.isValueUpdated = true;
                 }
             },
@@ -49,7 +50,7 @@
                 if(newValue == true){
                   window.location.reload(true);
                 }
-            }
+            },
         },
         created: function() {
             this.getCurrentValue()
