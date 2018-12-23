@@ -1,48 +1,47 @@
-# vue-truffle-template
+# Vue truffle starter dApp
+
+<p align="center">		
+  <img src="https://cdn-images-1.medium.com/max/1200/1*F1LChP2_EbsSPh4OPaJ7xA.png">		
+ </p>
+ 
+This project was generated with [vue-cli](https://github.com/vuejs/vue-cli) version 3.2.1
+
+An Vue [truffle](https://github.com/trufflesuite/truffle) starter dApp. Write, compile & deploy smart contracts for Ethereum.
 
 ## Demo
+Update a value of a smart contract with your Ethereum wallet address
+
 ![](screenshot.gif)
 
-## Build Setup
-``` bash
+### Part 1 - Ganache and Truffle
+Both of these tools are required before moving forward, and be sure you're connected to an Ethereum client before running the commands below.
+`npm install -g truffle ganache-cli` to run a local blockchain RPC server. Simply run `ganache-cli` to start Ganache
 
-# install truffle 
-npm install -g truffle
+1. to compile your contracts `truffle compile` 
+2  to deploy those contracts to the network`truffle migrate --network ropsten`
 
-#install dependencies
-npm install
+### Part 2 - Install dependencies
+1. `git clone https://github.com/marlowl/vue-truffle-starter-dapp/`
+2. `npm install`
+3. `cd vue`
+4. `npm install`
 
-# build and deploy contract onto network
-truffle compile
-truffle migrate --network ropsten
+### Part 3 - Update .env files
+1. In the root:
+`MNEMONIC= "your ganache MNEMONIC"`
+`INFURA_API_KEY="your infura key"`
 
-# move to app and install dependencies
-cd vue
-npm install
+2. In the vue folder:
+`VUE_APP_ETHADDRESS="your eth address"`
 
-# update the .env file in the root
-MNEMONIC= "your ganache MNEMONIC"
-INFURA_API_KEY="your infura key"
+## Run
+Run `npm run serve` to start a dev server 
 
-# update the .env file in application
-VUE_APP_ETHADDRESS="your eth address"
+## Build
+Run `npm run build` to build the project for a production build
 
-# serve with hot reload at localhost:8080
-npm run serve
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
+## Technologies & Languages Used
+1. Vue (Typescript/Javascript)
+2. Truffle (Solidity)
+3. Ganache
 
