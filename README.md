@@ -13,21 +13,25 @@ Update a value of a smart contract with your Ethereum wallet address
 
 ![](screenshot.gif)
 
-### Technologies & Languages Used
-1. Vue (Both TypeScript and JavaScript component examples included)
-2. Truffle (Solidity)
-3. Ganache
-
 # Project setup
+MetaMask and Infura account are both required for this project to work!
 
-### Ganache and Truffle (Both of these tools are required before moving forward)
+### MetaMask
+I would like to refer to this [article](https://blog.bankex.org/how-to-buy-ethereum-using-metamask-ccea0703daec) for a simple tutorial on how to setup MetaMask and get some free test Ether on your Ropsten account! After that you have your ETH address you need for the .env file
+
+### Infura
+Infura is a hosted Ethereum node cluster that lets you run your application without requiring them to set up their own Ethereum node or wallet. Register an account [here](https://infura.io/register) and require your API key you need for the .env file!
+
+### Get ganache-cli and truffle running on your environment
 ```
 npm install -g truffle ganache-cli
 ```
-Simply start the ganache-cli with the following command
+### Start ganache-cli
 ```
 ganache-cli
 ```
+After running this command you should be able to find your MNEMONIC you need for the .env file
+
 ### Install dependencies
 ```
 git clone https://github.com/marlowl/vue-truffle-starter-dapp/
@@ -35,46 +39,35 @@ git clone https://github.com/marlowl/vue-truffle-starter-dapp/
 ```
 npm install
 ```
-
 ### Update the .env file
 ```
 VUE_APP_ETHADDRESS= "your ETH address"
 MNEMONIC= "your ganache MNEMONIC"
 INFURA_API_KEY= "your infura key"
 ```
-
-### Truffle: compile and migrate contracts
-```
-truffle compile
-truffle migrate --network ropsten
-```
-### Compiles and hot-reloads for development
+### Run the development server
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+# Compile your own smart contracts
+Add your smart contract to the /contracts folder 
+
+### Compile the contract
 ```
-npm run build
+truffle compile
+```
+### Migrate your contract to the ropsten network
+```
+truffle migrate --network ropsten
+```
+### Change the current address to your deployed contract address
+```
+    let myContract = new web3.eth.Contract(
+      MyContract.abi,
+      "Your deployed contract address"
+    );
 ```
 
-### Run your tests
-```
-npm run test
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
 
