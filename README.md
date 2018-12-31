@@ -8,6 +8,8 @@ This project was generated with [vue-cli](https://github.com/vuejs/vue-cli) vers
 
 An Vue [truffle](https://github.com/trufflesuite/truffle) starter dApp. Write, compile & deploy smart contracts for Ethereum.
 
+Sample contract is deployed on the Ropsten testnetwork
+
 # Demo
 Update a value of a smart contract with your Ethereum wallet address
 
